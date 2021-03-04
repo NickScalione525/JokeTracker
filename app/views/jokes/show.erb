@@ -1,0 +1,10 @@
+<%= @joke.title%><br>
+<%= @joke.genre%><br>
+<%= @joke.punchline%><br>
+<%= @joke.characters%><br>
+<%= @joke.setting%><br> 
+
+<form method="POST" action="/jokes/<%=@joke.id%>">
+<input id="hidden" type="hidden" name="_method" value="DELETE">
+<input type="submit" value="delete">
+</form>

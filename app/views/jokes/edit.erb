@@ -1,0 +1,11 @@
+<h1> Change a Joke! </h1>
+
+<form action= "/jokes/<%= @joke.id %>" method="POST">
+<input id="hidden" type="hidden" name="_method" value="patch">
+Title: <input type=text value= "<%= @joke.title %>" name="title">
+Genre: <input type=text value= "<%= @joke.genre %>" name="genre">
+Punchline: <input type=text value= "<%= @joke.punchline %>" name="punchline">
+Characters: <input type=text value= "<%= @joke.characters %>" name="characters">
+Setting: <input type=text value= "<%= @joke.setting %>" name="setting">
+<input type=submit>
+<form>

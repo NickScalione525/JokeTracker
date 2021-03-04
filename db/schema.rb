@@ -14,11 +14,10 @@ ActiveRecord::Schema.define(version: 2021_03_04_103719) do
 
   create_table "jokes", force: :cascade do |t|
     t.string "title"
-    t.string "type"
+    t.string "genre"
     t.text "punchline"
     t.string "characters"
     t.string "setting"
-    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
