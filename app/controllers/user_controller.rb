@@ -2,7 +2,7 @@ class UserController < ApplicationController
 
     #  get /users/new
     get '/users/signup' do 
-        "This is the signup route"
+        erb :'/users/signup'
     end
 
 
