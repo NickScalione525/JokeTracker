@@ -18,9 +18,10 @@ ActiveRecord::Schema.define(version: 2021_03_04_103719) do
     t.text "punchline"
     t.string "characters"
     t.string "setting"
+    t.integer "user_id"
   end
 
-  create_table "user", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password"
   end
