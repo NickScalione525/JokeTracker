@@ -1,3 +1,3 @@
 class Joke < ActiveRecord::Base
-    belongs_to :Users
+    belongs_to :User
   end

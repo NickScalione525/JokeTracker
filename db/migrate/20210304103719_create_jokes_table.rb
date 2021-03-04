@@ -1,4 +1,4 @@
-class CreateJokesTable < ActiveRecord::Migration[6.1]
+class CreateJokesTable < ActiveRecord::Migration[5.2]
   def change
     create_table :jokes do |t|
       t.string :title
@@ -6,5 +6,6 @@ class CreateJokesTable < ActiveRecord::Migration[6.1]
       t.text :punchline
       t.string :characters
       t.string :setting
+    end
   end
 end
