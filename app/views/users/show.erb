@@ -1,1 +1,10 @@
-Hello, <%= @user.username %>
+Hello, <%= @user.username %><br>
+
+<% @user.jokes.each do |joke| %>
+
+
+
+<% end %>
+
+
+<a href="/users/logout">Log Out</a>

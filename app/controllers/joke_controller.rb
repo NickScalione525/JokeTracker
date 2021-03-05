@@ -7,7 +7,8 @@ end
 
 post '/jokes' do
    @joke = Joke.create(title: params[:title], genre: params[:genre], punchline: params[:punchline], characters: params[:characters], setting: params[:setting])   
-
+    user = User.find_by(id: session[:user_id])
+    user.jokes << joke
     redirect to "/jokes/#{@joke.id}"
 
 end
