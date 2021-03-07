@@ -29,20 +29,20 @@ get '/jokes/:id/edit' do
 end
 
 patch '/jokes/:id' do
-    @joke = Joke.find(params[:id])
+    @joke = Joke.find_by(id: params[:id])
+    if @joke.user_id == session[:user_id]
     @joke.update(title: params[:title], genre: params[:genre], punchline: params[:punchline], characters: params[:characters], setting: params[:setting])
+    end
     erb :'jokes/show'
 end
 
-delete '/jokes/:id/delete' do
-    if logged_in?
-      @joke = Joke.find_by_id(params[:id])
-      if @joke && @joke.user == current_user
-        @joke.delete
-      end
-      redirect to '/jokes'
+delete '/jokes/:id' do
+    @joke = Joke.find_by(id: params[:id])
+    if @joke.user_id == session[:user_id]
+      @joke.delete
+      redirect('/jokes')
     else
-      redirect to '/login'
+      erb :'jokes/show'
     end
   end
 end

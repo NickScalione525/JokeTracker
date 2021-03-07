@@ -45,6 +45,11 @@ end
         end
     end
 
+    get '/users' do
+        @users = User.all
+        erb :'/users/index'
+    end
+
 
     get '/logout' do
         session.clear

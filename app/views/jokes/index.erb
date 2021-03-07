@@ -1,12 +1,12 @@
-<% @jokes.each do |joke| %>
 
-Joke Number: <%= joke.id %>
-Joke Title: <%= joke.title %>
-Joke Genre: <%= joke.genre %>
-Joke Punchline: <%= joke.punchline %>
-Joke Characters: <%= joke.characters %>
-Joke Setting: <%= joke.setting %><br>
-<%# Username: <%= @user.username%> %>
+
+<ul>
+<% @jokes.each do |joke| %>
+<li><a href="/jokes/<%=joke.id%>"><%= joke.title%></a><li>
+
+
+<%# Username: <%= @user.username%>
 
 <%end%>
 
+<ul>
