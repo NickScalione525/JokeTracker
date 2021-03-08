@@ -29,7 +29,7 @@ end
 get '/jokes/:id/edit' do
   redirect_if_not_logged_in
     @joke = Joke.find_by(id: params[:id])  
-     if !@joke || @joke.user_id != session[:user_id]
+     if !@joke || @joke.user_id != current_user
       redirect to '/jokes'
      end
     erb :'/jokes/edit'
@@ -38,7 +38,7 @@ end
 patch '/jokes/:id' do
   redirect_if_not_logged_in
     @joke = Joke.find_by(id: params[:id])
-    if @joke.user_id == session[:user_id]
+    if @joke.user_id == current_user
     @joke.update(title: params[:title], genre: params[:genre], punchline: params[:punchline], characters: params[:characters], setting: params[:setting])
     end
     erb :'jokes/show'
