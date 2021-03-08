@@ -1,11 +1,13 @@
 class JokeController < ApplicationController
 
     get '/jokes' do
+      redirect_if_not_logged_in
         @jokes = Joke.all
         erb :'/jokes/index'
     end
 
     get '/jokes/new' do
+      redirect_if_not_logged_in
         erb :'/jokes/new'
     end
 
@@ -18,17 +20,23 @@ post '/jokes' do
 end
 
 get '/jokes/:id' do
+  redirect_if_not_logged_in
     @joke = Joke.find_by(id: params[:id])
     erb :'/jokes/show'
 end
 
 
 get '/jokes/:id/edit' do
+  redirect_if_not_logged_in
     @joke = Joke.find_by(id: params[:id])  
+     if !@joke || @joke.user_id != session[:user_id]
+      redirect to '/jokes'
+     end
     erb :'/jokes/edit'
 end
 
 patch '/jokes/:id' do
+  redirect_if_not_logged_in
     @joke = Joke.find_by(id: params[:id])
     if @joke.user_id == session[:user_id]
     @joke.update(title: params[:title], genre: params[:genre], punchline: params[:punchline], characters: params[:characters], setting: params[:setting])
@@ -37,6 +45,7 @@ patch '/jokes/:id' do
 end
 
 delete '/jokes/:id' do
+  redirect_if_not_logged_in
     @joke = Joke.find_by(id: params[:id])
     if @joke.user_id == session[:user_id]
       @joke.delete
