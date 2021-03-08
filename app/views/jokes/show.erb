@@ -4,6 +4,8 @@ Punchline: <%= @joke.punchline%><br>
 Characters: <%= @joke.characters%><br>
 Setting: <%= @joke.setting%><br> 
 
+
+<% if @joke.user_id == session[:user_id] %>
 <form method="POST" action="/jokes/<%=@joke.id%>">
 <input id="hidden" type="hidden" name="_method" value="DELETE">
 <input type="submit" value="delete">
@@ -12,3 +14,6 @@ Setting: <%= @joke.setting%><br>
 <br>
 
 <a href="/jokes/<%=@joke.id%>/edit">Edit Joke</a></p>
+
+
+<%end%>
