@@ -18,6 +18,7 @@ class UserController < ApplicationController
         session[:user_id] = user.id
         redirect to "/users/#{user.id}"
         else
+            flash[:message] = user.errors.full_messages 
             erb :'/users/signup'
 end
 end

@@ -9,6 +9,9 @@ class ApplicationController < Sinatra::Base
     set :session_secret, 'laugher'
   end
 
+  register Sinatra::Flash
+
+
   get "/" do
     erb :welcome
   end

@@ -1,17 +1,13 @@
 <h1>  Welcome!  Please Sign Up </h1>
 
+<p>
+<%flash[:message] && flash[:message].each do |m|%>
+<li><%=m%></li>
+<%end%>
 <form action= '/signup' method="POST">
 Username: <input type=text name="username">
 Password: <input type=password name="password">
 <input type=submit><br>
 Passwords must be at least 6 characters in length and no more than 20.
 <form>
-
-<br>
-
-
-
-
-<br>
-
-<a href="/login">Log In</a>
+<p>
